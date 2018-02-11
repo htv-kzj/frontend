@@ -27,7 +27,9 @@ const Map = (props) => {
           </IconButton>
         )}
       </GoogleMapReact>
-      <NavBar />
+      <NavBar
+        toggleHandler={props.toggleHandler}
+      />
     </div>
   );
 }
@@ -35,6 +37,7 @@ const Map = (props) => {
 Map.propTypes = {
   vehicles: PropTypes.arrayOf(PropTypes.object),
   clickHandler: PropTypes.func,
+  toggleHandler: PropTypes.func,
   selectedVehicleId: PropTypes.number,
   center: PropTypes.object,
   zoom: PropTypes.number,
@@ -44,6 +47,7 @@ Map.defaultProps = {
   vehicles: [],
   selectedVehicleId: 17,
   clickHandler: () => console.log('clicked vehicle'),
+  toggleHandler: () => console.log('clicked vehicle'),
   center: {lat: 42.814739, lng: -73.950312},
   zoom: 12,
 }

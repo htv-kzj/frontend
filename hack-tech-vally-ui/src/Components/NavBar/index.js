@@ -16,7 +16,7 @@ const NavBar = (props) => {
   return (
     <Paper
       className="paper"
-      style={{...style.paperStyle, width: paperWidth, left: props.windowWidth <= 767 ? 0 : 300}}
+      style={{...style.paperStyle, width: paperWidth, right: props.windowWidth <= 767 ? 0 : 10}}
     >
       <div style={style.dataSetStyle}>
         <div style={style.dataSetStyle}>
@@ -30,13 +30,17 @@ const NavBar = (props) => {
           </IconButton>
         </div>
         <div style={style.dataSetStyle}>
-          <IconButton>
+          <IconButton onClick={() => props.toggleHandler()}>
             <Menu color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
           </IconButton>
         </div>
       </div>
     </Paper>
   );
+}
+
+NavBar.propTypes = {
+
 }
 
 export default windowSize(NavBar);

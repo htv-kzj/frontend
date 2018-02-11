@@ -4,7 +4,7 @@ const GlobalStyle = {
   fontColor: blue500,
   busColor: blue500,
   themeColor: blue500,
-  selectColor: '#c8c8c8',
+  selectColor: '#e6e6e6',
   iconColor: black,
 }
 
