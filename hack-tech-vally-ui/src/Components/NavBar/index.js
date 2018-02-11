@@ -7,6 +7,7 @@ import Popover from 'material-ui/Popover';
 import MenuItem from 'material-ui/MenuItem';
 import Social from 'material-ui/svg-icons/social/poll';
 import Graph from 'material-ui/svg-icons/editor/format-list-bulleted';
+import Analytic from 'material-ui/svg-icons/action/timeline';
 import IconButton from 'material-ui/IconButton';
 import windowSize from 'react-window-size';
 import style from './style.js';
@@ -14,7 +15,7 @@ import GlobalStyle from '../../style.js';
 
 const NavBar = (props) => {
 
-    console.log(props.popOverToggled);
+    console.log(props.analyticsToggled);
     let paperWidth = props.windowWidth <= 768 ? props.windowWidth - 40 : 385;
     const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
 
@@ -25,17 +26,29 @@ const NavBar = (props) => {
       else {
         props.tableHandler(true);
         props.popOverHandler(false);
+        props.analyticsHandler(false);
       }
     }
 
     const togglePopOver = () => {
       if(props.popOverToggled) {
-        console.log('toggled p off');
         props.popOverHandler(false);
       }
       else {
         props.tableHandler(false);
         props.popOverHandler(true);
+        props.analyticsHandler(false);
+      }
+    }
+
+    const toggleAnalysis = () => {
+      if(props.analyticsToggled) {
+        props.analyticsHandler(false);
+      }
+      else {
+        props.tableHandler(false);
+        props.popOverHandler(false);
+        props.analyticsHandler(true);
       }
     }
 
@@ -57,6 +70,11 @@ const NavBar = (props) => {
           <div style={style.dataSetStyle}>
             <IconButton onClick={() => toggleTable()}>
               <Graph color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
+            </IconButton>
+          </div>
+          <div style={style.dataSetStyle}>
+            <IconButton onClick={() => toggleAnalysis()}>
+              <Analytic color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
             </IconButton>
           </div>
           <div style={style.dataSetStyle}>

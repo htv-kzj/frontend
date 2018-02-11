@@ -7,6 +7,7 @@ const defaultState = {
   popOverToggled: true,
   tableToggled: false,
   graphPopToggled: false,
+  analyticsToggled: false,
   selectedVehicle: selectedVehicleMock,
 };
 
@@ -23,8 +24,8 @@ const eventActions = (state = defaultState, action) => {
       return {...state, popOverToggled: action.payload}
     case 'TOGGLED_TABLE':
       return {...state, tableToggled: action.payload}
-    case 'TOGGLED_GRAPHPOP':
-      return {...state, graphPopToggled: !state.graphPopToggled}
+    case 'TOGGLED_ANALYTICS':
+      return {...state, analyticsToggled: action.payload}
     default:
       return state
   }

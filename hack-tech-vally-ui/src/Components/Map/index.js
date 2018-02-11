@@ -9,6 +9,7 @@ import GlobalStyle from '../../style.js';
 import NavBar from '../NavBar/index.js';
 import DataPopover from '../../Components/DataPopover/index.js';
 import TablePopover from '../../Components/TablePopover/index.js';
+import AnalyticsPopover from '../../Components/AnalyticsPopover/index.js';
 import './style.css'
 
 const Map = (props) => {
@@ -53,8 +54,8 @@ const Map = (props) => {
         tableHandler={props.tableHandler}
         popOverToggled={props.popOverToggled}
         tableToggled={props.tableToggled}
-        graphPopHandler={props.graphPopHandler}
-        graphPopToggled={props.graphPopToggled}
+        analyticsHandler={props.analyticsHandler}
+        analyticsToggled={props.analyticsToggled}
       />
       <DataPopover
         vehicleId={props.selectedVehicle.vehicleId}
@@ -68,6 +69,9 @@ const Map = (props) => {
       <TablePopover
         tableToggled={props.tableToggled}
         vehicles={props.vehicles}
+      />
+      <AnalyticsPopover
+        analyticsToggled={props.analyticsToggled}
       />
     </div>
   );

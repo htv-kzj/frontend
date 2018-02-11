@@ -29,9 +29,10 @@ export const tableToggled = payload => {
   }
 }
 
-export const graphPopToggled = () => {
-  console.log('action has been fired with payload: ');
+export const analyticsToggled = payload => {
+  console.log('action has been fired with payload: ', payload);
   return {
-    type: 'TOGGLED_GRAPHPOP',
+    type: 'TOGGLED_ANALYTICS',
+    payload
   }
 }
