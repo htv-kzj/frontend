@@ -49,7 +49,7 @@ const NavBar = (props) => {
               <Plus color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
             </IconButton>
           </div>
-          <div style={style.dataSetStyle}>
+          <div style={{...style.dataSetStyle, display: 'none'}}>
             <IconButton>
               <Person color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
             </IconButton>

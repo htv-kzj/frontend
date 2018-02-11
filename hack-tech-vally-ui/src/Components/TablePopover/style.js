@@ -4,7 +4,7 @@ const style = {
     margin: 20,
     textAlign: 'center',
     display: 'flex',
-    position: 'absolute',
+    position: 'fixed',
     bottom: '10px',
     right: '10px',
   },
