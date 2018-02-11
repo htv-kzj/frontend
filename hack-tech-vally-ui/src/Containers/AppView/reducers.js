@@ -6,7 +6,7 @@ const vehiclesMock = [
     location: 'Mohawk Hudson Bikeway',
   },
   {
-    "VehicleID" : 10,
+    vehicleId : 10,
     latitude: '42.830081',
     longitude: '-73.950404',
     location: '206 Washington Ave',

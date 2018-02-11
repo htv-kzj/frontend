@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { selectVehicle } from './actions';
 import SideBar from '../../Components/DesktopSideBar/index.js';
+import Map from '../../Components/Map/index.js';
+
 
 class AppView extends Component {
   constructor(props) {
@@ -15,10 +17,25 @@ class AppView extends Component {
 
   render() {
     return (
-      <SideBar
-        selectedVehicleId={this.props.selectedVehicleId}
-        clickHandler={this.selectVehicleHandler}
-      />
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
+          width: '100vw',
+        }}
+      >
+        <Map
+          vehicles={this.props.vehicles}
+          selectedVehicleId={this.props.selectedVehicleId}
+          clickHandler={this.selectVehicleHandler}
+        />
+        <SideBar
+          selectedVehicleId={this.props.selectedVehicleId}
+          clickHandler={this.selectVehicleHandler}
+          vehicles={this.props.vehicles}
+        />
+      </div>
     );
   }
 }
@@ -26,6 +43,7 @@ class AppView extends Component {
 const mapStateToProps = state => {
   return {
     selectedVehicleId: state.vehicleEvent.selectedVehicleId,
+    vehicles: state.vehicleEvent.vehicles,
   }
 };
 
