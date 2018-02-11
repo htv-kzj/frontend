@@ -15,7 +15,7 @@ const DataPopover = (props) => {
   let height = props.windowWidth >= 769 ? 100 : 500;
   let justifyContent = props.windowWidth >= 449 ? 'center' : 'flex-start';
   let bottom = props.popOverToggled ? '10px' : '-600px';
-  let position = props.windowWidth >= 769 ? 'absolute' : 'fixed';
+  let position = props.windowWidth >= 769 ? 'fixed' : 'fixed';
 
   return (
     <Paper
@@ -27,6 +27,7 @@ const DataPopover = (props) => {
         right,
         bottom,
         position,
+        display: props.vehicleId === '' ? 'none' : 'flex',
       }}
     >
       <div style={style.dataSetStyle}>

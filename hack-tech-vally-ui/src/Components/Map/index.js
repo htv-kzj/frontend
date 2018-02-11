@@ -23,6 +23,7 @@ const Map = (props) => {
       <GoogleMapReact
         defaultCenter={props.center}
         defaultZoom={props.zoom}
+        center={{lat: props.selectedVehicle.lastknowndata[0].latitude, lng: props.selectedVehicle.lastknowndata[0].longitude}}
       >
         {props.selectedVehicle && props.selectedVehicle.events.map((r) =>
           <IconButton
