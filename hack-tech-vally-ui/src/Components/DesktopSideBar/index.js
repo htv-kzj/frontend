@@ -18,8 +18,9 @@ const DesktopSideBar = (props) => {
   return (
     <div className="side-bar">
       <Drawer
-        open={props.windowWidth <= 380 ? true : true}
+        open={props.windowWidth <= 767 ? false : true}
         width={props.windowWidth <= 380 && '70%'}
+        docked={props.windowWidth <= 767 ? false : true}
       >
         <div style={{...headerStyle, display: props.windowWidth <= 380 && 'none'}}>
           <Bus color={"white"} style={busStyle} />

@@ -4,26 +4,31 @@ import GoogleMapReact from 'google-map-react';
 import IconButton from 'material-ui/IconButton';
 import DirectionBus from 'material-ui/svg-icons/maps/directions-bus';
 import GlobalStyle from '../../style.js';
+import NavBar from '../NavBar/index.js';
+import './style.css';
 
 //42°48'53.1"N 73°57'01.1"W
 const Map = (props) => {
   return (
-    <GoogleMapReact
-      defaultCenter={props.center}
-      defaultZoom={props.zoom}
-    >
-      {props.vehicles.map((r) =>
-        <IconButton
-          onClick={() => props.clickHandler(r.vehicleId)}
-          lat={r.latitude}
-          lng={r.longitude}
-        >
-          <DirectionBus
-            color={r.vehicleId === props.selectedVehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
-          />
-        </IconButton>
-      )}
-    </GoogleMapReact>
+    <div className="map">
+      <GoogleMapReact
+        defaultCenter={props.center}
+        defaultZoom={props.zoom}
+      >
+        {props.vehicles.map((r) =>
+          <IconButton
+            onClick={() => props.clickHandler(r.vehicleId)}
+            lat={r.latitude}
+            lng={r.longitude}
+          >
+            <DirectionBus
+              color={r.vehicleId === props.selectedVehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
+            />
+          </IconButton>
+        )}
+      </GoogleMapReact>
+      <NavBar />
+    </div>
   );
 }
 
