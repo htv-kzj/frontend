@@ -13,8 +13,8 @@ const defaultState = {
     lastknowneventid: '',
     lastknowndata: [
       {
-        longitude: '',
-        latitude: '',
+        longitude: -73.950312,
+        latitude: 42.814739,
         status: '',
         location: ''
       }
