@@ -5,48 +5,40 @@ import AppBar from 'material-ui/AppBar';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Bus from 'material-ui/svg-icons/maps/directions-bus';
+import WindowSize from 'react-window-size';
 import './style.css';
 import Style from './style.js';
 import GlobalStyle from '../../style.js';
 
-export default class DesktopSideBar extends React.Component {
+const DesktopSideBar = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {open: true};
-  }
+  const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
+  const { headerStyle, busStyle, titleStyle } = Style;
 
-  handleToggle = () => this.setState({open: !this.state.open});
-
-  // <RaisedButton
-  //   label="Toggle Drawer"
-  //   onClick={this.handleToggle}
-  //   style={{position: 'absolute', right: '-50px', top: '100px'}}
-  // />
-
-  render() {
-    const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
-    return (
-      <div className="side-bar">
-        <Drawer open={this.state.open} style={{position: 'relative'}}>
-          <div style={{backgroundColor: themeColor, paddingTop: 50, paddingBottom: 50, alignItems: 'center'}}>
-            <Bus color={"white"} style={{height: 50, width: 50, paddingTop: 5}} />
-            <h1 style={{color: "white", textAlign: 'center'}}>Schenectady County</h1>
-          </div>
-          {this.props.vehicles.map((r) =>
-            <MenuItem
-              key={r.vehicleId}
-              style={{backgroundColor: r.vehicleId === this.props.selectedVehicleId ? '#c8c8c8' : 'white', color: r.vehicleId === this.props.selectedVehicleId ? fontColor : 'black',}}
-              onClick={() => this.props.clickHandler(r.vehicleId)}
-            >
-              Vehicle {r.vehicleId}
-            </MenuItem>
-          )}
-        </Drawer>
-      </div>
-    );
-  }
+  return (
+    <div className="side-bar">
+      <Drawer
+        open={props.windowWidth <= 380 ? true : true}
+        width={props.windowWidth <= 380 && '70%'}
+      >
+        <div style={{...headerStyle, display: props.windowWidth <= 380 && 'none'}}>
+          <Bus color={"white"} style={busStyle} />
+          <h1 style={titleStyle}>Schenectady County</h1>
+        </div>
+        {props.vehicles.map((r) =>
+          <MenuItem
+            key={r.vehicleId}
+            style={{backgroundColor: r.vehicleId === props.selectedVehicleId ? '#c8c8c8' : 'white', color: r.vehicleId === props.selectedVehicleId ? fontColor : 'black',}}
+            onClick={() => props.clickHandler(r.vehicleId)}
+          >
+            Vehicle {r.vehicleId}
+          </MenuItem>
+        )}
+      </Drawer>
+    </div>
+  );
 }
+
 
 DesktopSideBar.propTypes = {
   vehicles: PropTypes.arrayOf(PropTypes.object),
@@ -72,3 +64,5 @@ DesktopSideBar.defaultProps = {
   selectedVehicleId: 17,
   clickHandler: () => console.log('clicked vehicle'),
 }
+
+export default WindowSize(DesktopSideBar);
