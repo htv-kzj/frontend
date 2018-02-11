@@ -5,7 +5,8 @@ import IconButton from 'material-ui/IconButton';
 import DirectionBus from 'material-ui/svg-icons/maps/directions-bus';
 import GlobalStyle from '../../style.js';
 import NavBar from '../NavBar/index.js';
-import './style.css';
+import DataPopover from '../../Components/DataPopover/index.js';
+import './style.css'
 
 //42°48'53.1"N 73°57'01.1"W
 const Map = (props) => {
@@ -17,17 +18,25 @@ const Map = (props) => {
       >
         {props.vehicles.map((r) =>
           <IconButton
-            onClick={() => props.clickHandler(r.vehicleId)}
+            onClick={() => props.clickHandler(r)}
             lat={r.latitude}
             lng={r.longitude}
+            key={r.vehicleId}
           >
             <DirectionBus
-              color={r.vehicleId === props.selectedVehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
+              color={r.vehicleId === props.selectedVehicle.vehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
             />
           </IconButton>
         )}
       </GoogleMapReact>
       <NavBar />
+      <DataPopover
+        vehicleId={props.selectedVehicle.vehicleId}
+        eventStatus={props.selectedVehicle.eventStatus}
+        milesTraveled={props.selectedVehicle.milesTraveled}
+        expectedTime={props.selectedVehicle.expectedTime}
+        idleTime={props.selectedVehicle.idleTime}
+      />
     </div>
   );
 }
