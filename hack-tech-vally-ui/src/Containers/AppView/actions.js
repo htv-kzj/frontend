@@ -6,6 +6,14 @@ export const selectVehicle = payload => {
   }
 }
 
+export const recievedAll = payload => {
+  console.log('we have recieved all: ', payload);
+  return {
+    type: 'RECIEVED_ALL',
+    payload
+  }
+}
+
 export const sideBarToggled = () => {
   console.log('action has been fired with payload: ');
   return {

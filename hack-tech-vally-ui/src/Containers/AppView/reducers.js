@@ -2,12 +2,39 @@ import selectedVehicleMock from './selectedVehicleMock.js';
 import vehiclesMock from './vehiclesMock.js';
 
 const defaultState = {
-  vehicles: vehiclesMock,
   sideBarToggled: true,
   popOverToggled: true,
   tableToggled: false,
   graphPopToggled: false,
-  selectedVehicle: selectedVehicleMock,
+  selectedVehicle: {
+    vehicleid: '',
+    createdatetime: '',
+    lastupdatedatetime: '',
+    lastknowneventid: '',
+    lastknowndata: [
+      {
+        longitude: '',
+        latitude: '',
+        status: '',
+        location: ''
+      }
+    ],
+    events: [
+      {
+      vehicleeventid: '',
+      eventtypeid: 91,
+      longitude: -73.9269583,
+      latitude: 42.8257311,
+      starttime: '',
+      endtime: '',
+      distance: 95595.37,
+      createdatetime: '',
+      heading: 309.6,
+      location: '',
+      streetspeed: 0
+      },
+    ],
+  },
 };
 
 const eventActions = (state = defaultState, action) => {
@@ -16,6 +43,11 @@ const eventActions = (state = defaultState, action) => {
       return {
         ...state,
         selectedVehicle: action.payload,
+      }
+    case 'RECIEVED_ALL':
+      return {
+        ...state,
+        vehicles: action.payload.data.vehicles
       }
     case 'TOGGLED_SIDEBAR':
       return {...state, sideBarToggled: !state.sideBarToggled}
