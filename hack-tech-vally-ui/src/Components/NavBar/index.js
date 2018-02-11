@@ -10,14 +10,13 @@ import GlobalStyle from '../../style.js';
 
 const NavBar = (props) => {
 
-  let paperWidth = props.windowWidth <= 767 ? props.windowWidth - 40 : 385;
+  let paperWidth = props.windowWidth <= 768 ? props.windowWidth - 40 : 385;
   const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
 
   return (
     <Paper
       className="paper"
-      style={{...style.paperStyle, width: paperWidth, right: props.windowWidth <= 767 ? 0 : 10}}
-    >
+      style={{...style.paperStyle, width: paperWidth, right: props.windowWidth <= 767 ? 0 : 10}}    >
       <div style={style.dataSetStyle}>
         <div style={style.dataSetStyle}>
           <IconButton>

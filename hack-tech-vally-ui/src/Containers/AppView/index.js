@@ -4,7 +4,6 @@ import { selectVehicle, sideBarToggled } from './actions';
 import SideBar from '../../Components/DesktopSideBar/index.js';
 import Map from '../../Components/Map/index.js';
 
-
 class AppView extends Component {
   constructor(props) {
     super(props);
@@ -32,16 +31,16 @@ class AppView extends Component {
       >
         <Map
           vehicles={this.props.vehicles}
-          selectedVehicleId={this.props.selectedVehicleId}
           clickHandler={this.selectVehicleHandler}
+          selectedVehicle={this.props.selectedVehicle}
           toggleHandler={this.sideBarToggledHandler}
         />
         <SideBar
-          selectedVehicleId={this.props.selectedVehicleId}
-          clickHandler={this.selectVehicleHandler}
           vehicles={this.props.vehicles}
           toggleHandler={this.sideBarToggledHandler}
           sideBarToggled={this.props.sideBarToggled}
+          selectedVehicle={this.props.selectedVehicle}
+          clickHandler={this.selectVehicleHandler}
         />
       </div>
     );
@@ -50,9 +49,9 @@ class AppView extends Component {
 
 const mapStateToProps = state => {
   return {
-    selectedVehicleId: state.vehicleEvent.selectedVehicleId,
     vehicles: state.vehicleEvent.vehicles,
     sideBarToggled: state.vehicleEvent.sideBarToggled,
+    selectedVehicle: state.vehicleEvent.selectedVehicle,
   }
 };
 

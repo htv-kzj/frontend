@@ -16,7 +16,7 @@ const DesktopSideBar = (props) => {
   const { headerStyle, busStyle, titleStyle } = Style;
 
   const menuHandler = (r) => {
-    props.clickHandler(r.vehicleId);
+    props.clickHandler(r);
     if(props.windowWidth <= 767){
       props.toggleHandler();
     }
@@ -38,15 +38,15 @@ const DesktopSideBar = (props) => {
           <MenuItem
             key={r.vehicleId}
             style={{
-              backgroundColor: r.vehicleId === props.selectedVehicleId ? selectColor : 'white',
-              color: r.vehicleId === props.selectedVehicleId ? fontColor : 'black',
-              fontWeight: r.vehicleId === props.selectedVehicleId && 'bold',
+              backgroundColor: r.vehicleId === props.selectedVehicle.vehicleId ? selectColor : 'white',
+              color: r.vehicleId === props.selectedVehicle.vehicleId ? fontColor : 'black',
+              fontWeight: r.vehicleId === props.selectedVehicle.vehicleId && 'bold',
             }}
             onClick={() => menuHandler(r)}
           >
             <div>
-              <p>Vehicle {r.vehicleId}</p>
-              <p>Location: {r.location}</p>
+              <div>Vehicle {r.vehicleId}</div>
+              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: {r.location}</div>
             </div>
           </MenuItem>
         )}
