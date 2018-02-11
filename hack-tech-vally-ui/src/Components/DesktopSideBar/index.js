@@ -44,7 +44,7 @@ const DesktopSideBar = (props) => {
             }}
             onClick={() => menuHandler(r)}
           >
-            <div>
+            <div style={{textAlign: 'left'}}>
               <div>Vehicle {r.vehicleId}</div>
               <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: {r.location}</div>
             </div>

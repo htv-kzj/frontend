@@ -19,3 +19,17 @@ export const popOverToggled = () => {
     type: 'TOGGLED_POPOVER',
   }
 }
+
+export const tableToggled = () => {
+  console.log('action has been fired with payload: ');
+  return {
+    type: 'TOGGLED_TABLE',
+  }
+}
+
+export const graphPopToggled = () => {
+  console.log('action has been fired with payload: ');
+  return {
+    type: 'TOGGLED_GRAPHPOP',
+  }
+}

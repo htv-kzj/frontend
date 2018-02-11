@@ -6,6 +6,7 @@ import DirectionBus from 'material-ui/svg-icons/maps/directions-bus';
 import GlobalStyle from '../../style.js';
 import NavBar from '../NavBar/index.js';
 import DataPopover from '../../Components/DataPopover/index.js';
+import TablePopover from '../../Components/TablePopover/index.js';
 import './style.css'
 
 //42°48'53.1"N 73°57'01.1"W
@@ -32,6 +33,9 @@ const Map = (props) => {
       <NavBar
         toggleHandler={props.toggleHandler}
         popOverHandler={props.popOverHandler}
+        tableHandler={props.tableHandler}
+        graphPopHandler={props.graphPopHandler}
+        graphPopToggled={props.graphPopToggled}
       />
       <DataPopover
         vehicleId={props.selectedVehicle.vehicleId}
@@ -41,6 +45,9 @@ const Map = (props) => {
         idleTime={props.selectedVehicle.idleTime}
         isToggled={props.isToggled}
         popOverToggled={props.popOverToggled}
+      />
+      <TablePopover
+        tableToggled={props.tableToggled}
       />
     </div>
   );
