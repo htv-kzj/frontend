@@ -3,6 +3,7 @@ import Paper from 'material-ui/Paper';
 import Plus from 'material-ui/svg-icons/content/add';
 import Person from 'material-ui/svg-icons/social/person';
 import Menu from 'material-ui/svg-icons/navigation/menu';
+import Social from 'material-ui/svg-icons/social/poll';
 import IconButton from 'material-ui/IconButton';
 import windowSize from 'react-window-size';
 import style from './style.js';
@@ -26,6 +27,11 @@ const NavBar = (props) => {
         <div style={style.dataSetStyle}>
           <IconButton>
             <Person color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
+          </IconButton>
+        </div>
+        <div style={style.dataSetStyle}>
+          <IconButton onClick={() => props.popOverHandler()}>
+            <Social color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
           </IconButton>
         </div>
         <div style={style.dataSetStyle}>

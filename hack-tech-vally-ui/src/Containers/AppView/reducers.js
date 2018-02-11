@@ -35,6 +35,7 @@ const selectedVehicleMock = {
 const defaultState = {
   vehicles: vehiclesMock,
   sideBarToggled: true,
+  popOverToggled: true,
   selectedVehicle: selectedVehicleMock,
 };
 
@@ -47,6 +48,8 @@ const eventActions = (state = defaultState, action) => {
       }
     case 'TOGGLED_SIDEBAR':
       return {...state, sideBarToggled: !state.sideBarToggled}
+    case 'TOGGLED_POPOVER':
+      return {...state, popOverToggled: !state.popOverToggled}
     default:
       return state
   }

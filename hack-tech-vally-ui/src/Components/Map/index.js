@@ -29,13 +29,18 @@ const Map = (props) => {
           </IconButton>
         )}
       </GoogleMapReact>
-      <NavBar toggleHandler={props.toggleHandler} />
+      <NavBar
+        toggleHandler={props.toggleHandler}
+        popOverHandler={props.popOverHandler}
+      />
       <DataPopover
         vehicleId={props.selectedVehicle.vehicleId}
         eventStatus={props.selectedVehicle.eventStatus}
         milesTraveled={props.selectedVehicle.milesTraveled}
         expectedTime={props.selectedVehicle.expectedTime}
         idleTime={props.selectedVehicle.idleTime}
+        isToggled={props.isToggled}
+        popOverToggled={props.popOverToggled}
       />
     </div>
   );
