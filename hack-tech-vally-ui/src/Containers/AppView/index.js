@@ -64,6 +64,7 @@ class AppView extends Component {
           tableToggled={this.props.tableToggled}
           graphPopHandler={this.graphPopToggledHandler}
           graphPopToggled={this.props.graphPopToggled}
+          loading={this.props.data.loading}
         />
         <SideBar
           vehicles={this.props.data.vehicles}
@@ -71,6 +72,7 @@ class AppView extends Component {
           sideBarToggled={this.props.sideBarToggled}
           selectedVehicle={this.props.selectedVehicle}
           clickHandler={this.selectVehicleHandler}
+          loading={this.props.data.loading}
         />
       </div>
     );
@@ -122,6 +124,7 @@ export default graphql(gql`
       createdatetime
       lastupdatedatetime
       lastknowneventid
+      enginehours
       lastknowndata {
         longitude
         latitude

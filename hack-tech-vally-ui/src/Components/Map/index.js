@@ -69,6 +69,7 @@ const Map = (props) => {
       <TablePopover
         tableToggled={props.tableToggled}
         vehicles={props.vehicles}
+        loading={props.loading}
       />
     </div>
   );
