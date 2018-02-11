@@ -58,8 +58,10 @@ const Map = (props) => {
         tableToggled={props.tableToggled}
         graphPopHandler={props.graphPopHandler}
         graphPopToggled={props.graphPopToggled}
+        vehicleId={props.selectedVehicle.vehicleid}
       />
       <DataPopover
+        predictions={props.predictions}
         vehicleId={props.selectedVehicle.vehicleid}
         eventStatus={props.selectedVehicle.lastknowndata[0].status}
         milesTraveled={precisionRound(props.selectedVehicle.events[0].distance - props.selectedVehicle.events[props.selectedVehicle.events.length - 1].distance, 2)}

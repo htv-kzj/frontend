@@ -60,7 +60,7 @@ const NavBar = (props) => {
             </IconButton>
           </div>
           <div style={style.dataSetStyle}>
-            <IconButton onClick={() => togglePopOver()}>
+            <IconButton onClick={() => togglePopOver()} disabled={props.vehicleId === '' ? true : false}>
               <Social color={"black"} style={{height: 50, width: 50, paddingTop: 5}} />
             </IconButton>
           </div>

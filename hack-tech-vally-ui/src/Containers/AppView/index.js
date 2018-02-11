@@ -43,7 +43,6 @@ class AppView extends Component {
     if(this.props.loading) {
       return null;
     }
-    console.log('data', this.props.vehicles);
     return (
       <div
         style={{
@@ -54,6 +53,7 @@ class AppView extends Component {
         }}
       >
         <Map
+          predictions={this.props.data.predictions}
           vehicles={this.props.data.vehicles}
           clickHandler={this.selectVehicleHandler}
           selectedVehicle={this.props.selectedVehicle}
@@ -119,6 +119,12 @@ const ConnectedAppView = connect(
 
 export default graphql(gql`
   query vehicleQuery {
+    predictions {
+      original_time
+      predicted_time
+      difference
+      summation
+    }
     vehicles {
       vehicleid
       createdatetime

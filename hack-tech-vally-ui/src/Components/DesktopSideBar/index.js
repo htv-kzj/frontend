@@ -33,7 +33,7 @@ const DesktopSideBar = (props) => {
       >
         <div style={{...headerStyle, display: props.windowWidth <= 380 && 'none'}}>
           <Bus color={"white"} style={busStyle} />
-          <h1 style={titleStyle}>Schenectady County</h1>
+          <h1 style={titleStyle}>Fleetser</h1>
         </div>
         {props.vehicles.map((r) =>
           <MenuItem

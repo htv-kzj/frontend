@@ -5,8 +5,8 @@ const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
 const Style = {
   headerStyle: {
     backgroundColor: themeColor,
-    paddingTop: 50,
-    paddingBottom: 50,
+    paddingTop: 100,
+    paddingBottom: 100,
     alignItems: 'center',
   },
   busStyle: {
