@@ -18,6 +18,11 @@ import style from './style.js';
 import './style.css';
 import GlobalStyle from '../../style.js';
 
+const precisionRound = (number, precision) => {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+};
+
 const TablePopover = (props) => {
   let width = props.windowWidth >= 769 && props.windowWidth  - 315;
   let right = props.windowWidth >= 769 ? 10 : 0;
@@ -57,10 +62,10 @@ const TablePopover = (props) => {
             >
             {props.vehicles.map((r) =>
               <TableRow>
-                <TableRowColumn>{r.vehicleId}</TableRowColumn>
-                <TableRowColumn>{r.location}</TableRowColumn>
-                <TableRowColumn>{r.eventStatus}</TableRowColumn>
-                <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{r.milesTraveled}</TableRowColumn>
+                <TableRowColumn>{r.vehicleid}</TableRowColumn>
+                <TableRowColumn>{r.lastknowndata[0].location}</TableRowColumn>
+                <TableRowColumn>{r.lastknowndata[0].status}</TableRowColumn>
+                <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{precisionRound(r.events[0].distance - r.events[r.events.length - 1].distance, 2)}</TableRowColumn>
                 <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{r.expectedTime}</TableRowColumn>
               </TableRow>
             )}
