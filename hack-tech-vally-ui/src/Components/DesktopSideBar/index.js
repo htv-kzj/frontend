@@ -51,11 +51,7 @@ const DesktopSideBar = (props) => {
             </div>
           </MenuItem>
         )}
-<<<<<<< HEAD
         <div style={{paddingTop: 50, display: props.loading === false && 'none'}}>
-=======
-        <div style={{paddingTop: 50}}>
->>>>>>> master
           <CircularProgress color={themeColor} />
         </div>
       </Drawer>
