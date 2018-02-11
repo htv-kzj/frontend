@@ -12,15 +12,23 @@ import GlobalStyle from '../../style.js';
 
 const DesktopSideBar = (props) => {
 
-  const { fontColor, busColor, iconColor, themeColor } = GlobalStyle;
+  const { fontColor, busColor, iconColor, themeColor, selectColor } = GlobalStyle;
   const { headerStyle, busStyle, titleStyle } = Style;
+
+  const menuHandler = (r) => {
+    props.clickHandler(r);
+    if(props.windowWidth <= 767){
+      props.toggleHandler();
+    }
+  }
 
   return (
     <div className="side-bar">
       <Drawer
-        open={props.windowWidth <= 767 ? false : true}
+        open={props.sideBarToggled}
         width={props.windowWidth <= 380 && '70%'}
         docked={props.windowWidth <= 767 ? false : true}
+        onRequestChange={() => props.windowWidth <= 767 ? props.toggleHandler() : null}
       >
         <div style={{...headerStyle, display: props.windowWidth <= 380 && 'none'}}>
           <Bus color={"white"} style={busStyle} />
@@ -29,10 +37,17 @@ const DesktopSideBar = (props) => {
         {props.vehicles.map((r) =>
           <MenuItem
             key={r.vehicleId}
-            style={{backgroundColor: r.vehicleId === props.selectedVehicleId ? '#c8c8c8' : 'white', color: r.vehicleId === props.selectedVehicleId ? fontColor : 'black',}}
-            onClick={() => props.clickHandler(r.vehicleId)}
+            style={{
+              backgroundColor: r.vehicleId === props.selectedVehicle.vehicleId ? selectColor : 'white',
+              color: r.vehicleId === props.selectedVehicle.vehicleId ? fontColor : 'black',
+              fontWeight: r.vehicleId === props.selectedVehicle.vehicleId && 'bold',
+            }}
+            onClick={() => menuHandler(r)}
           >
-            Vehicle {r.vehicleId}
+            <div>
+              <div>Vehicle {r.vehicleId}</div>
+              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: {r.location}</div>
+            </div>
           </MenuItem>
         )}
       </Drawer>

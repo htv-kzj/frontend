@@ -6,7 +6,7 @@ const style = {
     display: 'flex',
     position: 'absolute',
     top: '10px',
-    left: '300px',
+    right: '10px',
   },
   dataSetStyle: {
     flex: 1,

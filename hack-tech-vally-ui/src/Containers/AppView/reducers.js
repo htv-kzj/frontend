@@ -34,6 +34,7 @@ const selectedVehicleMock = {
 
 const defaultState = {
   vehicles: vehiclesMock,
+  sideBarToggled: true,
   selectedVehicle: selectedVehicleMock,
 };
 
@@ -44,6 +45,8 @@ const eventActions = (state = defaultState, action) => {
         ...state,
         selectedVehicle: action.payload,
       }
+    case 'TOGGLED_SIDEBAR':
+      return {...state, sideBarToggled: !state.sideBarToggled}
     default:
       return state
   }

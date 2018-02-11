@@ -5,3 +5,10 @@ export const selectVehicle = payload => {
     payload
   }
 }
+
+export const sideBarToggled = () => {
+  console.log('action has been fired with payload: ');
+  return {
+    type: 'TOGGLED_SIDEBAR',
+  }
+}
