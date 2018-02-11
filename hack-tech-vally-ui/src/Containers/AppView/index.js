@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectVehicle, sideBarToggled, popOverToggled } from './actions';
+import { selectVehicle, sideBarToggled, popOverToggled, tableToggled, graphPopToggled } from './actions';
 import SideBar from '../../Components/DesktopSideBar/index.js';
 import Map from '../../Components/Map/index.js';
 
@@ -10,6 +10,8 @@ class AppView extends Component {
     this.selectVehicleHandler = this.selectVehicleHandler.bind(this);
     this.sideBarToggledHandler = this.sideBarToggledHandler.bind(this);
     this.popOverToggledHandler = this.popOverToggledHandler.bind(this);
+    this.tableToggledHandler = this.tableToggledHandler.bind(this);
+    this.graphPopToggledHandler = this.graphPopToggledHandler.bind(this);
   }
 
   selectVehicleHandler(id) {
@@ -20,8 +22,16 @@ class AppView extends Component {
     this.props.sideBarToggledAction();
   }
 
-  popOverToggledHandler() {
-    this.props.popOverToggledAction();
+  popOverToggledHandler(isToggled) {
+    this.props.popOverToggledAction(isToggled);
+  }
+
+  tableToggledHandler(isToggled) {
+    this.props.tableToggledAction(isToggled);
+  }
+
+  graphPopToggledHandler() {
+    this.props.graphPopToggledAction();
   }
 
   render() {
@@ -41,6 +51,10 @@ class AppView extends Component {
           toggleHandler={this.sideBarToggledHandler}
           popOverHandler={this.popOverToggledHandler}
           popOverToggled={this.props.popOverToggled}
+          tableHandler={this.tableToggledHandler}
+          tableToggled={this.props.tableToggled}
+          graphPopHandler={this.graphPopToggledHandler}
+          graphPopToggled={this.props.graphPopToggled}
         />
         <SideBar
           vehicles={this.props.vehicles}
@@ -59,6 +73,8 @@ const mapStateToProps = state => {
     vehicles: state.vehicleEvent.vehicles,
     sideBarToggled: state.vehicleEvent.sideBarToggled,
     popOverToggled: state.vehicleEvent.popOverToggled,
+    tableToggled: state.vehicleEvent.tableToggled,
+    graphPopToggled: state.vehicleEvent.graphPopToggled,
     selectedVehicle: state.vehicleEvent.selectedVehicle,
   }
 };
@@ -71,8 +87,14 @@ const mapDispatchToProps = dispatch => {
     sideBarToggledAction: () => {
       dispatch(sideBarToggled())
     },
-    popOverToggledAction: () => {
-      dispatch(popOverToggled())
+    popOverToggledAction: (isToggled) => {
+      dispatch(popOverToggled(isToggled))
+    },
+    tableToggledAction: (isToggled) => {
+      dispatch(tableToggled(isToggled))
+    },
+    graphPopToggledAction: () => {
+      dispatch(graphPopToggled())
     },
   }
 };
