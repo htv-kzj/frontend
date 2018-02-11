@@ -42,6 +42,7 @@ const DataPopover = (props) => {
           <Explore style={style.iconStyle} color={GlobalStyle.iconColor} />
           <strong style={style.strongStyle}> Traveled: </strong> <em style={{ color: GlobalStyle.emColor}}> {props.milesTraveled} </em>
         </div>
+        {/*n
         <div style={{...style.dataStyle, justifyContent}}>
           <Expected style={style.iconStyle} color={GlobalStyle.iconColor} />
           <strong style={style.strongStyle}> Expected: </strong> <em style={{ color: GlobalStyle.emColor}}> {props.expectedTime} </em>
@@ -49,7 +50,7 @@ const DataPopover = (props) => {
         <div style={{...style.dataStyle, justifyContent}}>
           <Stop style={style.iconStyle} color={GlobalStyle.iconColor} />
           <strong style={style.strongStyle}> Idle Time: </strong> <em style={{ color: GlobalStyle.emColor}}> {props.idleTime} </em>
-        </div>
+        </div> */}
       </div>
     </Paper>
   );

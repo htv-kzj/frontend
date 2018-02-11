@@ -12,22 +12,19 @@ import TablePopover from '../../Components/TablePopover/index.js';
 import './style.css'
 
 const Map = (props) => {
+  console.log(props.selectedVehicle.events[0].distance);
   return (
     <div className="map">
       <GoogleMapReact
         defaultCenter={props.center}
-        center={{
-          lat: props.selectedVehicle.latitude,
-          lng: props.selectedVehicle.longitude,
-        }}
         defaultZoom={props.zoom}
       >
-        {props.selectedVehicle.eventList.map((r) =>
+        {props.selectedVehicle && props.selectedVehicle.events.map((r) =>
           <IconButton
-            lat={r.latitude.toString()}
-            lng={r.longitude.toString()}
-            key={r.StartTime}
-            style={{display: r.StartTime === props.selectedVehicle.StartTime ? 'none' : 'block'}}
+            lat={r.latitude}
+            lng={r.longitude}
+            key={r.starttime}
+            style={{display: r.starttime === props.selectedVehicle.lastupdatedatetime ? 'none' : 'block'}}
           >
             <Pin
               color={green200}
@@ -37,12 +34,12 @@ const Map = (props) => {
         {props.vehicles.map((r) =>
           <IconButton
             onClick={() => props.clickHandler(r)}
-            lat={r.latitude}
-            lng={r.longitude}
-            key={r.vehicleId}
+            lat={r.lastknowndata[0].latitude}
+            lng={r.lastknowndata[0].longitude}
+            key={r.vehicleid}
           >
             <DirectionBus
-              color={r.vehicleId === props.selectedVehicle.vehicleId ? green500 : 'grey'}
+              color={r.vehicleid === props.selectedVehicle.vehicleid ? green500 : 'grey'}
             />
           </IconButton>
         )}
@@ -57,11 +54,9 @@ const Map = (props) => {
         graphPopToggled={props.graphPopToggled}
       />
       <DataPopover
-        vehicleId={props.selectedVehicle.vehicleId}
-        eventStatus={props.selectedVehicle.eventStatus}
-        milesTraveled={props.selectedVehicle.milesTraveled}
-        expectedTime={props.selectedVehicle.expectedTime}
-        idleTime={props.selectedVehicle.idleTime}
+        vehicleId={props.selectedVehicle.vehicleid}
+        eventStatus={props.selectedVehicle.lastknowndata[0].status}
+        milesTraveled={props.selectedVehicle.events[0].distance}
         isToggled={props.isToggled}
         popOverToggled={props.popOverToggled}
       />
@@ -77,14 +72,16 @@ Map.propTypes = {
   vehicles: PropTypes.arrayOf(PropTypes.object),
   clickHandler: PropTypes.func,
   toggleHandler: PropTypes.func,
-  selectedVehicleId: PropTypes.number,
+  selectedVehicle: PropTypes.object,
   center: PropTypes.object,
   zoom: PropTypes.number,
 }
 
 Map.defaultProps = {
   vehicles: [],
-  selectedVehicleId: 17,
+  selectedVehicle: {
+    vehicleid: 0,
+  },
   clickHandler: () => console.log('clicked vehicle'),
   toggleHandler: () => console.log('clicked vehicle'),
   center: {lat: 42.814739, lng: -73.950312},

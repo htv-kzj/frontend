@@ -36,17 +36,17 @@ const DesktopSideBar = (props) => {
         </div>
         {props.vehicles.map((r) =>
           <MenuItem
-            key={r.vehicleId}
+            key={r.vehicleid}
             style={{
-              backgroundColor: r.vehicleId === props.selectedVehicle.vehicleId ? selectColor : 'white',
-              color: r.vehicleId === props.selectedVehicle.vehicleId ? fontColor : 'black',
-              fontWeight: r.vehicleId === props.selectedVehicle.vehicleId && 'bold',
+              backgroundColor: r.vehicleid === props.selectedVehicle.vehicleid ? selectColor : 'white',
+              color: r.vehicleid === props.selectedVehicle.vehicleid ? fontColor : 'black',
+              fontWeight: r.vehicleid === props.selectedVehicle.vehicleid && 'bold',
             }}
             onClick={() => menuHandler(r)}
           >
             <div style={{textAlign: 'left'}}>
-              <div>Vehicle {r.vehicleId}</div>
-              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: {r.location}</div>
+              <div>Vehicle {r.vehicleid}</div>
+              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: </div>
             </div>
           </MenuItem>
         )}
@@ -65,13 +65,13 @@ DesktopSideBar.propTypes = {
 DesktopSideBar.defaultProps = {
   vehicles: [
     {
-      vehicleId: 17,
+      vehicleid: 17,
       latitude: '42.825583',
       longitude: '-73.928019',
       location: 'Mohawk Hudson Bikeway',
     },
     {
-      vehicleId : 10,
+      vehicleid : 10,
       latitude: '42.830081',
       longitude: '-73.950404',
       location: '206 Washington Ave',
