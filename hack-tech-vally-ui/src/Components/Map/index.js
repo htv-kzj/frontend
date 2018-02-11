@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import IconButton from 'material-ui/IconButton';
 import DirectionBus from 'material-ui/svg-icons/maps/directions-bus';
-import {black, blue500} from 'material-ui/styles/colors';
+import GlobalStyle from '../../style.js';
 
 //42°48'53.1"N 73°57'01.1"W
 const Map = (props) => {
@@ -19,7 +19,7 @@ const Map = (props) => {
           lng={r.longitude}
         >
           <DirectionBus
-            color={r.vehicleId === props.selectedVehicleId ? blue500 : black}
+            color={r.vehicleId === props.selectedVehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
           />
         </IconButton>
       )}
