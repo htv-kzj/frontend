@@ -8,6 +8,7 @@ import {green500, green200} from 'material-ui/styles/colors';
 import GlobalStyle from '../../style.js';
 import NavBar from '../NavBar/index.js';
 import DataPopover from '../../Components/DataPopover/index.js';
+import TablePopover from '../../Components/TablePopover/index.js';
 import './style.css'
 
 const Map = (props) => {
@@ -49,6 +50,11 @@ const Map = (props) => {
       <NavBar
         toggleHandler={props.toggleHandler}
         popOverHandler={props.popOverHandler}
+        tableHandler={props.tableHandler}
+        popOverToggled={props.popOverToggled}
+        tableToggled={props.tableToggled}
+        graphPopHandler={props.graphPopHandler}
+        graphPopToggled={props.graphPopToggled}
       />
       <DataPopover
         vehicleId={props.selectedVehicle.vehicleId}
@@ -58,6 +64,10 @@ const Map = (props) => {
         idleTime={props.selectedVehicle.idleTime}
         isToggled={props.isToggled}
         popOverToggled={props.popOverToggled}
+      />
+      <TablePopover
+        tableToggled={props.tableToggled}
+        vehicles={props.vehicles}
       />
     </div>
   );

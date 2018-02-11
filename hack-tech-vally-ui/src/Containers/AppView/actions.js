@@ -13,9 +13,25 @@ export const sideBarToggled = () => {
   }
 }
 
-export const popOverToggled = () => {
-  console.log('action has been fired with payload: ');
+export const popOverToggled = payload => {
+  console.log('action has been fired with payload: ', payload);
   return {
     type: 'TOGGLED_POPOVER',
+    payload
+  }
+}
+
+export const tableToggled = payload => {
+  console.log('action has been fired with payload: ', payload);
+  return {
+    type: 'TOGGLED_TABLE',
+    payload
+  }
+}
+
+export const graphPopToggled = () => {
+  console.log('action has been fired with payload: ');
+  return {
+    type: 'TOGGLED_GRAPHPOP',
   }
 }
