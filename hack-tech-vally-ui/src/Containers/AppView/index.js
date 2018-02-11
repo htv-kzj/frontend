@@ -22,12 +22,12 @@ class AppView extends Component {
     this.props.sideBarToggledAction();
   }
 
-  popOverToggledHandler() {
-    this.props.popOverToggledAction();
+  popOverToggledHandler(isToggled) {
+    this.props.popOverToggledAction(isToggled);
   }
 
-  tableToggledHandler() {
-    this.props.tableToggledAction();
+  tableToggledHandler(isToggled) {
+    this.props.tableToggledAction(isToggled);
   }
 
   graphPopToggledHandler() {
@@ -87,11 +87,11 @@ const mapDispatchToProps = dispatch => {
     sideBarToggledAction: () => {
       dispatch(sideBarToggled())
     },
-    popOverToggledAction: () => {
-      dispatch(popOverToggled())
+    popOverToggledAction: (isToggled) => {
+      dispatch(popOverToggled(isToggled))
     },
-    tableToggledAction: () => {
-      dispatch(tableToggled())
+    tableToggledAction: (isToggled) => {
+      dispatch(tableToggled(isToggled))
     },
     graphPopToggledAction: () => {
       dispatch(graphPopToggled())

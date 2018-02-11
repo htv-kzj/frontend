@@ -51,6 +51,8 @@ const Map = (props) => {
         toggleHandler={props.toggleHandler}
         popOverHandler={props.popOverHandler}
         tableHandler={props.tableHandler}
+        popOverToggled={props.popOverToggled}
+        tableToggled={props.tableToggled}
         graphPopHandler={props.graphPopHandler}
         graphPopToggled={props.graphPopToggled}
       />
@@ -65,6 +67,7 @@ const Map = (props) => {
       />
       <TablePopover
         tableToggled={props.tableToggled}
+        vehicles={props.vehicles}
       />
     </div>
   );

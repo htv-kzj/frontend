@@ -20,9 +20,9 @@ const eventActions = (state = defaultState, action) => {
     case 'TOGGLED_SIDEBAR':
       return {...state, sideBarToggled: !state.sideBarToggled}
     case 'TOGGLED_POPOVER':
-      return {...state, popOverToggled: !state.popOverToggled}
+      return {...state, popOverToggled: action.payload}
     case 'TOGGLED_TABLE':
-      return {...state, tableToggled: !state.tableToggled}
+      return {...state, tableToggled: action.payload}
     case 'TOGGLED_GRAPHPOP':
       return {...state, graphPopToggled: !state.graphPopToggled}
     default:
