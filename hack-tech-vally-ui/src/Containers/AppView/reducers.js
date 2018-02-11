@@ -1,36 +1,5 @@
-const vehiclesMock = [
-  {
-    vehicleId: 17,
-    latitude: '42.825583',
-    longitude: '-73.928019',
-    location: 'Mohawk Hudson Bikeway',
-    eventStatus: 'Stopped',
-    milesTraveled: '8138.71',
-    expectedTime: '12:30pm',
-    idleTime: '32m',
-  },
-  {
-    vehicleId : 10,
-    latitude: '42.830081',
-    longitude: '-73.950404',
-    location: '206 Washington Ave',
-    eventStatus: 'Driving',
-    milesTraveled: '52985',
-    expectedTime: '3:30am',
-    idleTime: '72m'
-  },
-];
-
-const selectedVehicleMock = {
-  vehicleId: 17,
-  latitude: '42.825583',
-  longitude: '-73.928019',
-  location: 'Mohawk Hudson Bikeway',
-  eventStatus: 'Stopped',
-  milesTraveled: '8138.71',
-  expectedTime: '12:30pm',
-  idleTime: '32m',
-};
+import selectedVehicleMock from './selectedVehicleMock.js';
+import vehiclesMock from './vehiclesMock.js';
 
 const defaultState = {
   vehicles: vehiclesMock,

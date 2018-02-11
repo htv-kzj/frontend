@@ -3,19 +3,36 @@ import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import IconButton from 'material-ui/IconButton';
 import DirectionBus from 'material-ui/svg-icons/maps/directions-bus';
+import Pin from 'material-ui/svg-icons/action/room';
+import {green500, green200} from 'material-ui/styles/colors';
 import GlobalStyle from '../../style.js';
 import NavBar from '../NavBar/index.js';
 import DataPopover from '../../Components/DataPopover/index.js';
 import './style.css'
 
-//42°48'53.1"N 73°57'01.1"W
 const Map = (props) => {
   return (
     <div className="map">
       <GoogleMapReact
         defaultCenter={props.center}
+        center={{
+          lat: props.selectedVehicle.latitude,
+          lng: props.selectedVehicle.longitude,
+        }}
         defaultZoom={props.zoom}
       >
+        {props.selectedVehicle.eventList.map((r) =>
+          <IconButton
+            lat={r.latitude.toString()}
+            lng={r.longitude.toString()}
+            key={r.StartTime}
+            style={{display: r.StartTime === props.selectedVehicle.StartTime ? 'none' : 'block'}}
+          >
+            <Pin
+              color={green200}
+            />
+          </IconButton>
+        )}
         {props.vehicles.map((r) =>
           <IconButton
             onClick={() => props.clickHandler(r)}
@@ -24,7 +41,7 @@ const Map = (props) => {
             key={r.vehicleId}
           >
             <DirectionBus
-              color={r.vehicleId === props.selectedVehicle.vehicleId ? GlobalStyle.busColor : GlobalStyle.iconColor}
+              color={r.vehicleId === props.selectedVehicle.vehicleId ? green500 : 'grey'}
             />
           </IconButton>
         )}
@@ -61,7 +78,7 @@ Map.defaultProps = {
   clickHandler: () => console.log('clicked vehicle'),
   toggleHandler: () => console.log('clicked vehicle'),
   center: {lat: 42.814739, lng: -73.950312},
-  zoom: 12,
+  zoom: 15,
 }
 
 export default Map;
