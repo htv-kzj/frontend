@@ -3,7 +3,7 @@ import vehiclesMock from './vehiclesMock.js';
 
 const defaultState = {
   sideBarToggled: true,
-  popOverToggled: true,
+  popOverToggled: false,
   tableToggled: false,
   graphPopToggled: false,
   selectedVehicle: {

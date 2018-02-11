@@ -26,7 +26,7 @@ const DesktopSideBar = (props) => {
   return (
     <div className="side-bar">
       <Drawer
-        open={props.sideBarToggled}
+        open={props.windowWidth <= 767 ? !props.sideBarToggled : props.sideBarToggled}
         width={props.windowWidth <= 380 && '70%'}
         docked={props.windowWidth <= 767 ? false : true}
         onRequestChange={() => props.windowWidth <= 767 ? props.toggleHandler() : null}
@@ -51,7 +51,11 @@ const DesktopSideBar = (props) => {
             </div>
           </MenuItem>
         )}
+<<<<<<< HEAD
         <div style={{paddingTop: 50, display: props.loading === false && 'none'}}>
+=======
+        <div style={{paddingTop: 50}}>
+>>>>>>> master
           <CircularProgress color={themeColor} />
         </div>
       </Drawer>
