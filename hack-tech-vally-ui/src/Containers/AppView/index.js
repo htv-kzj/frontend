@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { selectVehicle, sideBarToggled } from './actions';
+import { selectVehicle, sideBarToggled, popOverToggled } from './actions';
 import SideBar from '../../Components/DesktopSideBar/index.js';
 import Map from '../../Components/Map/index.js';
 
@@ -9,6 +9,7 @@ class AppView extends Component {
     super(props);
     this.selectVehicleHandler = this.selectVehicleHandler.bind(this);
     this.sideBarToggledHandler = this.sideBarToggledHandler.bind(this);
+    this.popOverToggledHandler = this.popOverToggledHandler.bind(this);
   }
 
   selectVehicleHandler(id) {
@@ -17,6 +18,10 @@ class AppView extends Component {
 
   sideBarToggledHandler() {
     this.props.sideBarToggledAction();
+  }
+
+  popOverToggledHandler() {
+    this.props.popOverToggledAction();
   }
 
   render() {
@@ -34,6 +39,8 @@ class AppView extends Component {
           clickHandler={this.selectVehicleHandler}
           selectedVehicle={this.props.selectedVehicle}
           toggleHandler={this.sideBarToggledHandler}
+          popOverHandler={this.popOverToggledHandler}
+          popOverToggled={this.props.popOverToggled}
         />
         <SideBar
           vehicles={this.props.vehicles}
@@ -51,6 +58,7 @@ const mapStateToProps = state => {
   return {
     vehicles: state.vehicleEvent.vehicles,
     sideBarToggled: state.vehicleEvent.sideBarToggled,
+    popOverToggled: state.vehicleEvent.popOverToggled,
     selectedVehicle: state.vehicleEvent.selectedVehicle,
   }
 };
@@ -62,7 +70,10 @@ const mapDispatchToProps = dispatch => {
     },
     sideBarToggledAction: () => {
       dispatch(sideBarToggled())
-    }
+    },
+    popOverToggledAction: () => {
+      dispatch(popOverToggled())
+    },
   }
 };
 

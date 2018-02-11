@@ -10,18 +10,23 @@ import style from './style.js';
 import GlobalStyle from '../../style.js';
 
 const DataPopover = (props) => {
-  let paperWidth = props.windowWidth >= 769 && props.windowWidth  - 315;
+  let width = props.windowWidth >= 769 && props.windowWidth  - 315;
   let right = props.windowWidth >= 769 ? 10 : 0;
   let height = props.windowWidth >= 769 ? 100 : 500;
   let justifyContent = props.windowWidth >= 449 ? 'center' : 'flex-start';
+  let bottom = props.popOverToggled ? '10px' : '-600px';
+  let position = props.windowWidth >= 769 ? 'absolute' : 'fixed';
+
   return (
     <Paper
       className="paper"
       style={{
         ...style.paperStyle,
-        width: paperWidth,
+        width,
         height,
-        right
+        right,
+        bottom,
+        position,
       }}
     >
       <div style={style.dataSetStyle}>
