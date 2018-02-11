@@ -46,7 +46,7 @@ const DesktopSideBar = (props) => {
           >
             <div style={{textAlign: 'left'}}>
               <div>Vehicle {r.vehicleid}</div>
-              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: </div>
+              <div style={{fontSize: 12, fontStyle: 'italic'}}>Location: {r.lastknowndata[0].location}</div>
             </div>
           </MenuItem>
         )}
@@ -63,20 +63,7 @@ DesktopSideBar.propTypes = {
 }
 
 DesktopSideBar.defaultProps = {
-  vehicles: [
-    {
-      vehicleid: 17,
-      latitude: '42.825583',
-      longitude: '-73.928019',
-      location: 'Mohawk Hudson Bikeway',
-    },
-    {
-      vehicleid : 10,
-      latitude: '42.830081',
-      longitude: '-73.950404',
-      location: '206 Washington Ave',
-    },
-  ],
+  vehicles: [],
   selectedVehicleId: 17,
   clickHandler: () => console.log('clicked vehicle'),
 }

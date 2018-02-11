@@ -11,6 +11,11 @@ import DataPopover from '../../Components/DataPopover/index.js';
 import TablePopover from '../../Components/TablePopover/index.js';
 import './style.css'
 
+const precisionRound = (number, precision) => {
+  var factor = Math.pow(10, precision);
+  return Math.round(number * factor) / factor;
+};
+
 const Map = (props) => {
   console.log(props.selectedVehicle.events[0].distance);
   return (
@@ -56,7 +61,7 @@ const Map = (props) => {
       <DataPopover
         vehicleId={props.selectedVehicle.vehicleid}
         eventStatus={props.selectedVehicle.lastknowndata[0].status}
-        milesTraveled={props.selectedVehicle.events[0].distance}
+        milesTraveled={precisionRound(props.selectedVehicle.events[0].distance - props.selectedVehicle.events[props.selectedVehicle.events.length - 1].distance, 2)}
         isToggled={props.isToggled}
         popOverToggled={props.popOverToggled}
       />

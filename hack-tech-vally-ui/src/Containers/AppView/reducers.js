@@ -22,16 +22,16 @@ const defaultState = {
     events: [
       {
       vehicleeventid: '',
-      eventtypeid: 91,
-      longitude: -73.9269583,
-      latitude: 42.8257311,
+      eventtypeid: '',
+      longitude: '',
+      latitude: '',
       starttime: '',
       endtime: '',
-      distance: 95595.37,
+      distance: '',
       createdatetime: '',
-      heading: 309.6,
+      heading: '',
       location: '',
-      streetspeed: 0
+      streetspeed: ''
       },
     ],
   },

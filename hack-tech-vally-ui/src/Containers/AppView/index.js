@@ -43,7 +43,7 @@ class AppView extends Component {
     if(this.props.loading) {
       return null;
     }
-    console.log('data', this.props);
+    console.log('data', this.props.vehicles);
     return (
       <div
         style={{
@@ -126,12 +126,22 @@ export default graphql(gql`
         longitude
         latitude
         status
+        location
       }
+      displayname
       events {
         vehicleeventid,
         eventtypeid,
         longitude,
         latitude
+        starttime
+        endtime
+        distance
+        createdatetime
+        heading
+        eventtypeid
+        location
+        streetspeed
       }
     }
   }
