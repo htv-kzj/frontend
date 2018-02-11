@@ -6,6 +6,7 @@ import Explore from 'material-ui/svg-icons/action/explore';
 import Announcement from 'material-ui/svg-icons/action/announcement';
 import Expected from 'material-ui/svg-icons/maps/add-location';
 import Stop from 'material-ui/svg-icons/av/stop';
+import CircularProgress from 'material-ui/CircularProgress';
 import {
   Table,
   TableBody,
@@ -18,6 +19,7 @@ import style from './style.js';
 import './style.css';
 import GlobalStyle from '../../style.js';
 
+const { themeColor } = GlobalStyle;
 const precisionRound = (number, precision) => {
   var factor = Math.pow(10, precision);
   return Math.round(number * factor) / factor;
@@ -54,19 +56,22 @@ const TablePopover = (props) => {
               <TableHeaderColumn>Location</TableHeaderColumn>
               <TableHeaderColumn>Event</TableHeaderColumn>
               <TableHeaderColumn style={{display: props.windowWidth < 449 && 'none'}}>Miles</TableHeaderColumn>
-              <TableHeaderColumn style={{display: props.windowWidth < 449 && 'none'}}>Exp. Time</TableHeaderColumn>
+              <TableHeaderColumn style={{display: props.windowWidth < 449 && 'none'}}>Eng. Time</TableHeaderColumn>
             </TableRow>
           </TableHeader>
           <TableBody
             displayRowCheckbox={false}
             >
+            <div style={{paddingTop: 50, display: props.loading === false && 'none'}}>
+              <CircularProgress color={themeColor} />
+            </div>
             {props.vehicles.map((r) =>
               <TableRow>
                 <TableRowColumn>{r.vehicleid}</TableRowColumn>
                 <TableRowColumn>{r.lastknowndata[0].location}</TableRowColumn>
                 <TableRowColumn>{r.lastknowndata[0].status}</TableRowColumn>
                 <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{precisionRound(r.events[0].distance - r.events[r.events.length - 1].distance, 2)}</TableRowColumn>
-                <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{r.expectedTime}</TableRowColumn>
+                <TableRowColumn style={{display: props.windowWidth < 449 && 'none'}}>{r.enginehours}</TableRowColumn>
               </TableRow>
             )}
           </TableBody>
